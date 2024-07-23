@@ -38,3 +38,16 @@ a++
 * /
 + -
 << >>
+
+a &= b
+a |= b ...(^ << >>也可)
+
+int num1 = 9; //直接初始化
+int num2 = 'C'; //implicit conversion隐式转换，将八位的C赋给int32位的末8位
+int num3 = (int)'C'; //explicit conversion显式转换
+int num4 = int('C'); //效果同上， 上面是C-style;此处为function style
+int num5 = 2.8; //implicit conversion，num5 变成2
+float num_float = 2.3;//inplicit conversion
+short num_short = 650000; //short 范围大约三万多， num_short变为-5360
+
+float f = 17/5; //f will be 3.f
