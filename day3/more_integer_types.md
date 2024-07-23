@@ -24,6 +24,7 @@ since C99
 
 size_t: (由于计算机内存越来越大，如今用int不够表达内存大小)
 unsigned integer
+当size_t类型的变量从0--，会跳到最大值，容易引起死循环！
 和sizeof 的结果是同一类型
 
 since C++11
