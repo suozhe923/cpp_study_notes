@@ -1,0 +1,103 @@
+vim
+i : insert
+o : 在光标下方新建一行并进入编辑模式（大写则在上方）
+:q 退出
+:q! 强退
+:qa (quit all) 关闭所有窗口
+:w 写入
+:e {文件名} 打开要编辑的文件
+:ls 显示打开的缓存
+:help {标题} 打开帮助文档
+:help :w 打开 :w 命令的帮助文档
+:help w 打开 w 移动的帮助文档
+基本移动: hjkl （左， 下， 上， 右）
+词： w （下一个词）， b （词初）， e （词尾）
+行： 0 （行初）， ^ （第一个非空格字符）， $ （行尾）
+屏幕： H （屏幕首行，highest）， M （屏幕中间，middle）， L （屏幕底部，lowest）
+翻页： Ctrl-u （上翻）， Ctrl-d （下翻）
+文件： gg （文件头）， G （文件尾）
+行数： :{行数}<CR> 或者 {行数}G ({行数}为行数)
+杂项： %可在括号之间来回换
+查找：
+fa (find a，从光标开始，左往右)
+Fa(find a,从右往左）
+ta (移到a前）
+Ta(移到a后）
+搜索: /{正则表达式}, n / N 用于导航匹配(/abc will move to first abc 按n 跳转到下一个abc)
+u 撤销（undo)
+^R redo
+d + 移动 = delete
+c = d + i(change need to delete and write
+dd , cc 都会删除整行(连续两次按下常对整行进行操作）
+x 删除当前字符(剪切）
+r 将输入值当作参数repalce当前字符
+y 复制（yank)
+p 粘贴（paste)
+
+v 进入visual mode
+V进入行可视模式
+^V进入块可视
+~反转大小写
+
+4j 相当于按4次j
+你可以用修饰语改变“名词”的意义。修饰语i means inside and a means around。
+ci( 改变当前括号内的内容
+ci[ 改变当前方括号内的内容
+da' 删除一个单引号字符串， 包括周围的单引号
+
+tmux安装（# Ubuntu or Debian
+sudo apt-get install tmux
+# CentOS or Fedora
+sudo yum install tmux
+# Mac
+brew install tmux）
+tmux 
+# 划分为上下两个窗格
+tmux split-window
+
+# 划分左右两个窗格
+tmux split-window -h
+
+. 表示重复执行前一个编辑命令
+
+搜索和替换
+:s （替换）命令（文档）。
+
+%s/foo/bar/g
+在整个文件中将 foo 全局替换成 bar
+%s/\[.*\](\(.*\))/\1/g
+将有命名的 Markdown 链接替换成简单 URLs
+多窗口
+用 :sp / :vsp 来分割窗口
+同一个缓存可以在多个窗口中显示。
+宏
+q{字符} 来开始在寄存器{字符}中录制宏
+q停止录制
+@{字符} 重放宏
+宏的执行遇错误会停止
+{计数}@{字符}执行一个宏{计数}次
+宏可以递归
+首先用q{字符}q清除宏
+录制该宏，用 @{字符} 来递归调用该宏 （在录制完成之前不会有任何操作）
+例子：将 xml 转成 json (file)
+一个有 “name” / “email” 键对象的数组
+用一个 Python 程序？
+用 sed / 正则表达式
+g/people/d
+%s/<person>/{/g
+%s/<name>\(.*\)<\/name>/"name": "\1",/g
+…
+Vim 命令 / 宏
+ggdd, Gdd 删除第一行和最后一行
+格式化最后一个元素的宏 （寄存器 e）
+跳转到有 <name> 的行
+qe^r"f>s": "<ESC>f<C"<ESC>q
+格式化一个的宏
+跳转到有 <person> 的行
+qpS{<ESC>j@eA,<ESC>j@ejS},<ESC>q
+格式化一个标签然后转到另外一个的宏
+跳转到有 <person> 的行
+qq@pjq
+执行宏到文件尾
+999@q
+手动移除最后的 , 然后加上 [ 和 ] 分隔符
