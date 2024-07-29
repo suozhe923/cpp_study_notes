@@ -1,0 +1,13 @@
+对于void函数可直接return;或者不return
+
+return o 相当于将i的值拷贝出来再将i杀死
+当o的内存非常大时，直接return可能会降低效率
+可以将原本想要输出的o的引用，作为一个参数
+例如想要得到A+B的矩阵C
+bool matrix_add(const Matrix & matA, const Matrix & matB, Matrix & matC){
+    //check 
+    //recreate C(if needed)
+    //do
+    //return true;
+}
+//const 前缀确保AB不变
